@@ -1,14 +1,9 @@
-FROM debian:latest
+FROM php:7.0-fpm
 
 COPY drupal /var/www/drupal
 
 RUN chown -R www-data. /var/www/drupal
 
-RUN apt-get update && apt-get install -y \
-  php7.0 php7.0-fpm php7.0-mysql php7.0-mbstring php7.0-gd php7.0-xml
+RUN apt-get update && apt-get install -y php7.0-mysql php7.0-mbstring php7.0-gd php7.0-xml
 
-COPY conf/php.conf /etc/php/7.0/fpm/pool.d/www.conf
-
-EXPOSE 9000
-
-ENTRYPOINT /etc/init.d/php7.0-fpm start
+COPY conf/php.conf /usr/local/etc/php-fpm.d/www.conf
