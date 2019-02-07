@@ -1,3 +1,3 @@
 FROM nginx:latest
 
-RUN 
+COPY drupal/ /var/www/drupal
