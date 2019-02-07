@@ -1,6 +1,6 @@
 FROM debian:latest
 
-COPY .drupal/ /var/www/drupal
+COPY drupal /var/www/drupal
 
 RUN chown -R www-data. /var/www/drupal
 

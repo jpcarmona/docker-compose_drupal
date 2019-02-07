@@ -5,7 +5,7 @@ services:
   nginx:
     #image: nginx:latest
     build:
-      context: ./
+      context: .
       dockerfile: Dockerfile-nginx
     ports:
         - "8080:80"
@@ -17,7 +17,7 @@ services:
 
   php:
     build:
-      context: ./
+      context: .
       dockerfile: Dockerfile-php
     volumes:
 #        - .drupal:/var/www/drupal
