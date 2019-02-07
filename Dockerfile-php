@@ -4,9 +4,9 @@ COPY drupal /var/www/drupal
 
 RUN chown -R www-data. /var/www/drupal
 
-#RUN rm /etc/apt/preferences.d/no-debian-php
-#
-#RUN apt-get update && apt-get install -y php-gd
+RUN rm /etc/apt/preferences.d/no-debian-php
+
+RUN apt-get update && apt-get install -y libpng-dev
 
 RUN docker-php-ext-install gd
 
