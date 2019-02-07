@@ -11,4 +11,4 @@ COPY conf/php.conf /etc/php/7.0/fpm/pool.d/www.conf
 
 EXPOSE 9000
 
-CMD /etc/init.d/php7.0-fpm start
+ENTRYPOINT /etc/init.d/php7.0-fpm start
