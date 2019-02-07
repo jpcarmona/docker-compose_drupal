@@ -6,6 +6,6 @@ RUN chown -R www-data. /var/www/drupal
 
 RUN rm /etc/apt/preferences.d/no-debian-php
 
-#RUN apt-get update && apt-get install -y php7.0-mysql php7.0-mbstring php7.0-gd php7.0-xml
+RUN apt-get update && apt-get install -y php-gd
 
 COPY conf/php.conf /usr/local/etc/php-fpm.d/www.conf
