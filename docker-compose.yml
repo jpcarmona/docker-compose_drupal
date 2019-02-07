@@ -5,7 +5,8 @@ services:
   nginx:
     #image: nginx:latest
     build:
-      context: ./docker/nginx
+      context: ./
+      dockerfile: Dockerfile-nginx
     ports:
         - "8080:80"
     volumes:
@@ -16,7 +17,8 @@ services:
 
   php:
     build:
-      context: ./docker/php
+      context: ./
+      dockerfile: Dockerfile-php
     volumes:
 #        - .drupal:/var/www/drupal
         - .conf/php.conf:/etc/php/7.0/fpm/pool.d/www.conf
