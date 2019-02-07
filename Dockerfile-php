@@ -6,7 +6,7 @@ RUN chown -R www-data. /var/www/drupal
 
 RUN rm /etc/apt/preferences.d/no-debian-php
 
-RUN apt-get update && apt-get install -y libpng-dev
+RUN apt-get update && apt-get install -y libpng-dev php7.0-mysql php7.0-mbstring php7.0-xml
 
 RUN docker-php-ext-install gd
 
