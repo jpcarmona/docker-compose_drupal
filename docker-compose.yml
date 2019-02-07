@@ -1,0 +1,45 @@
+version: '3'
+
+services:
+
+  nginx:
+    image: nginx:latest
+#    build:
+#      context: ./docker/nginx
+    ports:
+        - "8080:80"
+    volumes:
+        - ./data/drupal:/var/www/drupal
+        - ./data/conf/nginx.conf:/etc/nginx/sites-available/default
+    depends_on:
+        - php
+
+  php:
+    build:
+      context: ./docker/php
+    volumes:
+        - ./data/drupal:/var/www/html
+        - ./data/conf/php.conf:/usr/local/etc/php-fpm.d/www.conf
+    ports:
+      - 9000:9000
+    environment:
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+
+#  memcached:
+#    image: memcached:latest
+#    environment:
+#      # Memcached memory limit in megabytes
+#  - MEMCACHED_MEMORY_LIMIT=128
+
+  mysql:
+    image: mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    depends_on:
+        - php
+    ports:
+      - 3306:3306
