@@ -9,8 +9,8 @@ services:
     ports:
         - "8080:80"
     volumes:
-#        - ./data/drupal:/var/www/drupal
-        - ./data/conf/nginx.conf:/etc/nginx/conf.d/default.conf
+#        - .drupal:/var/www/drupal
+        - .conf/nginx.conf:/etc/nginx/conf.d/default.conf
     depends_on:
         - php
 
@@ -18,13 +18,10 @@ services:
     build:
       context: ./docker/php
     volumes:
-#        - ./data/drupal:/var/www/drupal
-        - ./data/conf/php.conf:/usr/local/etc/php-fpm.d/www.conf
+#        - .drupal:/var/www/drupal
+        - .conf/php.conf:/etc/php/7.0/fpm/pool.d/www.conf
     ports:
       - 9000:9000
-    environment:
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
 
 #  memcached:
 #    image: memcached:latest
