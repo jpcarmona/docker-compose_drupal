@@ -18,7 +18,7 @@ services:
     build:
       context: ./docker/php
     volumes:
-        - ./data/drupal:/var/www/html
+        - ./data/drupal:/var/www/drupal
         - ./data/conf/php.conf:/usr/local/etc/php-fpm.d/www.conf
     ports:
       - 9000:9000
